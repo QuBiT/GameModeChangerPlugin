@@ -1,5 +1,6 @@
 package commands;
 
+import actions.Action;
 import actions.SwitchPlayerToCreativeMode;
 import entities.PluginUser;
 
@@ -12,11 +13,11 @@ public class SwitchPlayerToCreativeModeCommand extends Command {
 		getActionList().add(new SwitchPlayerToCreativeMode());
 	}
 
-	private final SwitchPlayerToCreativeMode	action	= new SwitchPlayerToCreativeMode();
-
 	@Override
 	protected void performCommandFor(final PluginUser player) {
-		action.performActionFor(player);
+		for (Action action : getActionList()) {
+			action.performActionFor(player);
+		}
 	}
 
 	@Override
